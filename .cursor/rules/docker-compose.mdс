@@ -1,0 +1,11 @@
+# Project Rules for Docker Compose
+
+name: docker-compose
+description: Best practices for writing Docker Compose files and managing multi-container applications.
+
+rules:
+  - Always use the `docker compose` command instead of `docker-compose`, as the latter is deprecated in recent Docker versions.
+  - Do not include the `version` field in Compose YAML files; it is no longer required or recommended for modern Compose specifications.
+  - Use consistent indentation (2 spaces) and lowercase keys in YAML files.
+  - Prefer named volumes and networks over anonymous ones for better clarity and reusability.
+  - Use `.env` files for environment variables instead of hardcoding them in the `docker-compose.yml`.

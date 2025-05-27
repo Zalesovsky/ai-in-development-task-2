@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+When writing Spring Boot code:
+
+## Project Structure
+- Place components in their respective packages:
+  ```
+  com.example.project/
+    ├── controller/
+    ├── service/
+    ├── repository/
+    ├── model/
+    └── config/
+  ```
+
+## Naming
+- Controllers: `*Controller` (e.g., `UserController`)
+- Services: `*Service` (e.g., `OrderService`)
+- Repositories: `*Repository` (e.g., `ProductRepository`)
+- DTOs: `*Dto` (e.g., `UserDto`)
+
+## Dependency Injection
+```java
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+```
+
+@example/UserService.java

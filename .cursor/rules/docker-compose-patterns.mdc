@@ -1,0 +1,36 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+When working with Docker Compose:
+
+## File Structure
+```yaml
+services:
+  api:
+    build: 
+      context: ./api
+      target: development
+    env_file: .env
+    volumes:
+      - api_data:/data
+    networks:
+      - backend
+
+volumes:
+  api_data:
+    name: "${PROJECT_NAME}_api_data"
+
+networks:
+  backend:
+    name: "${PROJECT_NAME}_backend"
+```
+
+## Best Practices
+- Use `docker compose` (not `docker-compose`)
+- Store secrets in `.env` files
+- Use named volumes and networks
+- Define health checks for services
+
+@example/docker-compose.yml

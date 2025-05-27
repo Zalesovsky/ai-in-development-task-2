@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Docker Compose Best Practices
+
+When working with Docker Compose in this project:
+
+## Command Usage
+- Use `docker compose` command instead of `docker-compose` (deprecated in recent Docker versions)
+
+## File Structure
+- Omit the `version` field in Compose YAML files (no longer required for modern specifications)
+- Use consistent indentation (2 spaces) and lowercase keys in YAML files
+- Organize services in logical groups
+
+## Resource Management
+- Use named volumes over anonymous ones for better clarity and reusability
+- Define explicit networks when services need to communicate
+- Use meaningful names for services, volumes, and networks
+
+## Configuration
+- Store environment variables in `.env` files
+- Never hardcode sensitive values in `docker-compose.yml`
+- Use build arguments for build-time variables
+
+## Examples
+
+```yaml
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - app_data:/data
+
+volumes:
+  app_data:
+    name: "${PROJECT_NAME}_app_data"
+```

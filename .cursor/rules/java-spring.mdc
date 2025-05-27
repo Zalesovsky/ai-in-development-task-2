@@ -1,0 +1,64 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Java and Spring Boot Development Standards
+
+## Code Style and Structure
+- Use Java 17+ features where applicable (records, sealed classes, pattern matching)
+- Follow Spring Boot 3.x best practices
+- Structure applications using layered architecture:
+  - Controllers (`*.controller`)
+  - Services (`*.service`)
+  - Repositories (`*.repository`)
+  - Models (`*.model`)
+  - Configurations (`*.config`)
+
+## Naming Conventions
+- Classes: PascalCase (e.g., `UserController`, `OrderService`)
+- Methods/Variables: camelCase (e.g., `findUserById`, `isOrderValid`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MAX_RETRY_ATTEMPTS`)
+
+## Spring Boot Guidelines
+### Dependency Injection
+- Use constructor injection over field injection
+- Example:
+```java
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+```
+
+### Configuration
+- Use `application.yml` over `application.properties`
+- Implement environment-specific configs via Spring Profiles
+- Use `@ConfigurationProperties` for type-safe configuration
+
+### Testing
+- Write unit tests with JUnit 5 and `@ExtendsWith`
+- Use MockMvc for web layer testing
+- Use `@DataJpaTest` for repository tests
+
+### Security
+- Implement Spring Security for auth
+- Use proper password encoding (bcrypt/argon2)
+- Configure CORS when needed
+
+### API Design
+- Follow RESTful principles
+- Use proper HTTP methods and status codes
+- Document APIs with Springdoc OpenAPI
+
+### Logging
+- Use SLF4J with Logback
+- Implement appropriate log levels:
+  - ERROR: Application failures
+  - WARN: Unexpected situations
+  - INFO: Important business events
+  - DEBUG: Development details
