@@ -1,0 +1,65 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Java Build and Deployment
+
+## Gradle Configuration
+```groovy
+plugins {
+    id 'java'
+    id 'jacoco'  // Code coverage
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    // Use version catalogs
+    implementation(libs.commons.lang3)
+    testImplementation(libs.junit.jupiter)
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+```
+
+## Maven Configuration
+```xml
+<properties>
+    <java.version>17</java.version>
+    <junit.version>5.9.2</junit.version>
+</properties>
+
+<dependencies>
+    <!-- Use dependency management -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+## Project Structure
+```
+project/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   └── resources/
+│   └── test/
+│       ├── java/
+│       └── resources/
+├── build.gradle/pom.xml
+└── README.md
+```
+
+@example/build.gradle
+@example/pom.xml

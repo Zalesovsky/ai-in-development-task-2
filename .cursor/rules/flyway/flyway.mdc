@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Flyway Migration Rules
+
+- Create a separate table in the database for each entity.
+- Each table must be created in a separate migration (one migration file — one table).
+- Migration file naming:
+   - Use the format: `V<version>__<table_name>_table.sql`
+   - Example: `V1__user_table.sql`, `V2__address_table.sql`
+- Use CREATE *something* IF NOT EXISTS

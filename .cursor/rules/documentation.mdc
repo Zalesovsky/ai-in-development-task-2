@@ -1,0 +1,134 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Documentation Guidelines
+
+## General Principles
+- Write for your audience - consider who will read the documentation
+- Keep it simple and concise
+- Use active voice
+- Be consistent in terminology and formatting
+- Update documentation when code changes
+
+## Structure
+1. Overview/Introduction
+   - Brief description of the component/system
+   - Purpose and main features
+   - Prerequisites
+
+2. Getting Started
+   - Installation steps
+   - Basic configuration
+   - Quick start example
+
+3. Detailed Documentation
+   - Core concepts
+   - API reference
+   - Configuration options
+   - Examples
+
+4. Troubleshooting
+   - Common issues
+   - Solutions
+   - Best practices
+
+## Code Examples
+```java
+// Good example
+@GetMapping("/users/{id}")
+public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
+    return userService.findById(id)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
+}
+
+// Bad example - too verbose
+@GetMapping("/users/{id}")
+public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
+    Optional<UserDto> user = userService.findById(id);
+    if (user.isPresent()) {
+        return ResponseEntity.ok(user.get());
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
+```
+
+## API Documentation
+```java
+/**
+ * Retrieves a user by their ID.
+ *
+ * @param id the unique identifier of the user
+ * @return ResponseEntity containing the user if found, or 404 if not found
+ * @throws IllegalArgumentException if id is null
+ */
+@GetMapping("/users/{id}")
+public ResponseEntity<UserDto> getUser(@PathVariable Long id)
+```
+
+## README Structure
+```markdown
+# Project Name
+
+## Description
+Brief description of what the project does.
+
+## Features
+- Key feature 1
+- Key feature 2
+- Key feature 3
+
+## Prerequisites
+- Java 17
+- PostgreSQL 14
+- Docker (optional)
+
+## Installation
+1. Clone the repository
+2. Configure application.yml
+3. Run the application
+
+## Usage
+Basic usage examples with code snippets.
+
+## API Reference
+Link to API documentation or basic endpoints overview.
+
+## Contributing
+Guidelines for contributing to the project.
+
+## License
+Project license information.
+```
+
+## Best Practices
+1. Use clear and descriptive names
+2. Include examples for complex operations
+3. Document all public APIs
+4. Keep documentation up to date
+5. Use diagrams when helpful
+6. Include troubleshooting section
+7. Add version information
+8. Document breaking changes
+
+## Common Pitfalls to Avoid
+- Over-documentation
+- Technical jargon without explanation
+- Outdated information
+- Missing prerequisites
+- Incomplete examples
+- Inconsistent formatting
+- Poor organization
+
+## Documentation Tools
+- Swagger/OpenAPI for API documentation
+- PlantUML for diagrams
+- Markdown for general documentation
+- Javadoc for Java code
+- Postman for API examples
+
+@example/README.md
+@example/ApiDocumentation.java

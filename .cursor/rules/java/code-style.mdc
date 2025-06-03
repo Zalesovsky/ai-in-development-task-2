@@ -1,0 +1,57 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Java Code Style and Best Practices
+
+## Code Structure
+- Write clean, efficient, and well-documented Java code
+- Use descriptive method and variable names
+- Follow SOLID principles
+- Maintain high cohesion and low coupling
+
+## Java Features
+- Use Java 17+ features where applicable:
+  - Records for immutable data classes
+  - Sealed classes for restricted inheritance
+  - Pattern matching for instanceof
+  - Text blocks for multiline strings
+  - Switch expressions
+
+## Naming Conventions
+```java
+// Class names - PascalCase
+public class UserManager {
+    // Constants - UPPER_SNAKE_CASE
+    private static final int MAX_RETRY_ATTEMPTS = 3;
+    
+    // Variables and methods - camelCase
+    private String userName;
+    
+    public boolean isValidUser() {
+        // implementation
+    }
+}
+```
+
+## Testing
+- Use JUnit 5 for unit testing
+- Follow BDD pattern
+- Use meaningful test names
+- Keep tests independent
+
+## Exception Handling
+```java
+try {
+    // Specific exception types
+    processData();
+} catch (IOException e) {
+    logger.error("Failed to process data", e);
+    throw new DataProcessingException("Data processing failed", e);
+} finally {
+    cleanup();
+}
+```
+
+@example/UserManager.java

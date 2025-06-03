@@ -10,8 +10,10 @@ When writing Spring Boot code:
   ```
   com.example.project/
     ├── controller/
+    ├── dto/
     ├── service/
     ├── repository/
+    ├── mapper/
     ├── model/
     └── config/
   ```
@@ -24,6 +26,7 @@ When writing Spring Boot code:
 
 ## Dependency Injection
 ```java
+@AllArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
